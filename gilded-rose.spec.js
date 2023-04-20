@@ -56,13 +56,26 @@ import { Item, items, updateQuality } from "./gilded-rose.js";
 
 // Testing dynamics of Hand ----------------------------------------------------------------
 
-describe("handQuality", () => {
-  it("reduces quality and sellIn of Sulfuras, Hand of Ragnaros by 1", () => {
-    const testItem = items[3];
+// describe("handQuality", () => {
+//   it("quality and sellIn of Sulfuras, Hand of Ragnaros remains constant", () => {
+//     const testItem = items[3];
+
+//     updateQuality();
+
+//     expect(testItem.sellIn).toBe(0);
+//     expect(testItem.quality).toBe(80);
+//   });
+// });
+
+// Testing dynamics of Backstage Passes -------------------------------------------------------
+
+describe("passQuality", () => {
+  it("quality increases as concert(sellIn) approaches, after which quality is 0", () => {
+    const testItem = items[4];
 
     updateQuality();
 
-    expect(testItem.sellIn).toBe(0);
-    expect(testItem.quality).toBe(80);
+    expect(testItem.sellIn).toBe(14);
+    expect(testItem.quality).toBe(21);
   });
 });

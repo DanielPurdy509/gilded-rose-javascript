@@ -1,44 +1,45 @@
 import { expect, describe, it } from "vitest";
-import { Item, items, updateQuality } from "./gilded-rose.js";
+// import { Item, items, updateQuality } from "./gilded-rose.js";
+import {Item,items,BaseItem,AgedBrie,Hand,Passes,Conjured,updateQuality} from "./draft.js";
 
 // Testing dynamics of basic items -------------------------------------------------------------
 
 // describe("basicUpdateQuality", () => {
 //   it("reduces quality and sellIn of basic items by 1", () => {
-//     const testItem = new Item("basic", 5, 3);
-//     items.push(testItem);
-
-//     updateQuality();
-
-//     expect(testItem.quality).toBe(2);
-//     expect(testItem.sellIn).toBe(4);
-//   });
-// });
-
-// Testing dynamics of Dexterity Vest -------------------------------------------------
-
-// describe("vestQuality", () => {
-//   it("reduces quality and sellIn of dexterity vest by 1", () => {
+//     // const testItem = new BaseItem("basic", 5, 3);
 //     const testItem = items[0];
 
-//     updateQuality();
+//     testItem.updateQuality();
 
 //     expect(testItem.sellIn).toBe(9);
 //     expect(testItem.quality).toBe(19);
 //   });
 // });
 
+// Testing dynamics of Dexterity Vest -------------------------------------------------
+
+describe("vestQuality", () => {
+  it("reduces quality and sellIn of dexterity vest by 1", () => {
+    const testItem = items[0];
+
+    updateQuality();
+
+    expect(testItem.sellIn).toBe(9);
+    expect(testItem.quality).toBe(19);
+  });
+});
+
 // Testing dynamics of Aged Brie -----------------------------------------------------------
 
 // describe("brieQuality", () => {
-//   it("increases quality as item gets older, but does not exceed 50 quality", () => {
-//     const testItem = items[1];
+  it("increases quality as item gets older, but does not exceed 50 quality", () => {
+    const testItem = items[1];
 
-//     updateQuality();
+    updateQuality();
 
-//     expect(testItem.sellIn).toBe(1);
-//     expect(testItem.quality).toBe(1);
-//   });
+    expect(testItem.sellIn).toBe(1);
+    expect(testItem.quality).toBe(1);
+  });
 // });
 
 // Testing dynamics of Elixir -------------------------------------------------------------
@@ -82,13 +83,13 @@ import { Item, items, updateQuality } from "./gilded-rose.js";
 
 // Testing dynamics of Conjured Mana Cake ------------------------------------------------------
 
-describe("cakeQuality", () => {
-  it("quality decreases twice as fast as basic items for each day closer to sellIn date", () => {
-    const testItem = items[5];
+// describe("cakeQuality", () => {
+//   it("quality decreases twice as fast as basic items for each day closer to sellIn date", () => {
+//     const testItem = items[5];
 
-    updateQuality();
+//     updateQuality();
 
-    expect(testItem.sellIn).toBe(2);
-    expect(testItem.quality).toBe(4);
-  });
-});
+//     expect(testItem.sellIn).toBe(2);
+//     expect(testItem.quality).toBe(4);
+//   });
+// });

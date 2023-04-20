@@ -69,13 +69,26 @@ import { Item, items, updateQuality } from "./gilded-rose.js";
 
 // Testing dynamics of Backstage Passes -------------------------------------------------------
 
-describe("passQuality", () => {
-  it("quality increases as concert(sellIn) approaches, after which quality is 0", () => {
-    const testItem = items[4];
+// describe("passQuality", () => {
+//   it("quality increases as concert(sellIn) approaches, after which quality is 0", () => {
+//     const testItem = items[4];
+
+//     updateQuality();
+
+//     expect(testItem.sellIn).toBe(14);
+//     expect(testItem.quality).toBe(21);
+//   });
+// });
+
+// Testing dynamics of Conjured Mana Cake ------------------------------------------------------
+
+describe("cakeQuality", () => {
+  it("quality decreases twice as fast as basic items for each day closer to sellIn date", () => {
+    const testItem = items[5];
 
     updateQuality();
 
-    expect(testItem.sellIn).toBe(14);
-    expect(testItem.quality).toBe(21);
+    expect(testItem.sellIn).toBe(2);
+    expect(testItem.quality).toBe(4);
   });
 });

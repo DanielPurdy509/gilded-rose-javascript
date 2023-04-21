@@ -39,12 +39,12 @@ class Item {
     }
     updateQuality(){
         if(this.quality < 50){
-            if(this.sellIn > 0){
+            if(this.sellIn > -1){
                 this.quality ++;
                 this.sellIn --;
             }
             else if(this.sellIn < 0){
-                this.quality + 2;
+                this.quality += 2;
                 this.sellIn --;
             }
         }
@@ -75,11 +75,11 @@ class Passes extends Item {
             this.sellIn --;
         }
         if(this.sellIn < 11 > 5){
-            this.quality + 2;
+            this.quality += 2;
             this.sellIn --;
         }
         if(this.sellIn < 6 > 0){
-            this.quality + 3;
+            this.quality += 3;
             this.sellIn --;
         }
         else{
@@ -125,6 +125,15 @@ const updateQuality = () => {
     }
 }
 
-export {Item,items,BaseItem,AgedBrie,Hand,Passes,Conjured,updateQuality};
+const updateQualityTest = (testItem,numberOfIterations) => {
+    var item = testItem;
+    console.log(`[Start] Quality:${item.quality}. Sell Date: ${item.sellIn}`);
+    for(let i = 1; i <= numberOfIterations; i++){
+        item.updateQuality();
+        console.log(`[Iteration ${i}] Quality:${item.quality}. Sell Date: ${item.sellIn}`);
+    }
+}
+
+export {Item,items,BaseItem,AgedBrie,Hand,Passes,Conjured,updateQualityTest};
 
 console.log(items);

@@ -74,15 +74,15 @@ class Passes extends Item {
             this.quality ++;
             this.sellIn --;
         }
-        if(this.sellIn < 11 > 5){
+        if(this.sellIn < 11 && this.sellIn > 5){
             this.quality += 2;
             this.sellIn --;
         }
-        if(this.sellIn < 6 > 0){
+        if(this.sellIn < 6 && this.sellIn > 0){
             this.quality += 3;
             this.sellIn --;
         }
-        else{
+        else if(this.sellIn <= 0){
             this.quality = 0;
             this.sellIn --;
         }
@@ -96,19 +96,30 @@ class Conjured extends Item {
         super(name,sellIn,quality);
     }
     updateQuality(){
-        if(this.sellIn > 0){
-            this.quality - 2;
-            this.sellIn --;
-        }
-        else if(this.sellIn < 0){
-            this.quality - 4;
-            this.sellIn --;
-        }
+            if(this.sellIn > -1){
+                if(this.quality - 2 < 0){
+                    this.sellIn --;
+                }
+                else{
+                    this.quality -= 2;
+                    this.sellIn --;
+                }
+            }
+            else if(this.sellIn < 0){
+                if(this.quality - 4 < 0){
+                    this.sellIn --;
+                }
+                else{
+                    this.quality -= 4;
+                    this.sellIn --;
+                }
+            }
     }
 }
 // Items with classes -----------------------------------------------------
 
 let items = [];
+// Name, Sell Date, Quality
 
 items.push(new BaseItem("+5 Dexterity Vest", 10, 20));
 items.push(new AgedBrie("Aged Brie", 2, 0));
@@ -127,7 +138,7 @@ const updateQuality = () => {
 
 const updateQualityTest = (testItem,numberOfIterations) => {
     var item = testItem;
-    console.log(`[Start] Quality:${item.quality}. Sell Date: ${item.sellIn}`);
+    console.log(`[Starting Conditions of ${item.name}] Quality: ${item.quality}. Sell Date: ${item.sellIn}`);
     for(let i = 1; i <= numberOfIterations; i++){
         item.updateQuality();
         console.log(`[Iteration ${i}] Quality:${item.quality}. Sell Date: ${item.sellIn}`);

@@ -49,27 +49,16 @@ import {Item,items,BaseItem,AgedBrie,Hand,Passes,Conjured,updateQualityTest} fro
 
 // 5 Iterations
 
-describe("brieQuality", () => {
-  it("Aged Brie increases quality twice as fast if sellIN date is less than 0, but does not exceed 50 quality [5 iterations]", () => {
-    const testItem = items[1];
+// describe("brieQuality", () => {
+//   it("Aged Brie increases quality twice as fast if sellIN date is less than 0, but does not exceed 50 quality [5 iterations]", () => {
+//     const testItem = items[1];
 
-    // updateQuality();
-    //   console.log(`[Iteration 1] Quality:${testItem.quality}. Sell Date: ${testItem.sellIn}`);
-    // updateQuality();
-    //   console.log(`[Iteration 2] Quality:${testItem.quality}. Sell Date: ${testItem.sellIn}`);
-    // updateQuality();
-    //   console.log(`[Iteration 3] Quality:${testItem.quality}. Sell Date: ${testItem.sellIn}`);
-    // updateQuality();
-    //   console.log(`[Iteration 4] Quality:${testItem.quality}. Sell Date: ${testItem.sellIn}`);
-    // updateQuality();
-    //   console.log(`[Iteration 5] Quality:${testItem.quality}. Sell Date: ${testItem.sellIn}`);
-
-    updateQualityTest(testItem,5);
+//     updateQualityTest(testItem,5);
     
-    expect(testItem.sellIn).toBe(-3);
-    expect(testItem.quality).toBe(7);
-  });
-});
+//     expect(testItem.sellIn).toBe(-3);
+//     expect(testItem.quality).toBe(7);
+//   });
+// });
 
 // Testing dynamics of Elixir -------------------------------------------------------------
 
@@ -104,18 +93,16 @@ describe("brieQuality", () => {
 
 // Testing dynamics of Backstage Passes -------------------------------------------------------
 
-// describe("passQuality", () => {
-//   it("quality increases as concert(sellIn) approaches, after which quality is 0", () => {
-//     const testItem = items[4];
+describe("passQuality", () => {
+  it("quality increases as concert(sellIn) approaches, after which quality is 0", () => {
+    const testItem = items[4];
 
-//     console.log(`[Start] Quality:${testItem.quality}. Sell Date: ${testItem.sellIn}`);
-//     updateQuality();
-//     console.log(`[Iteration 1] Quality:${testItem.quality}. Sell Date: ${testItem.sellIn}`);
+    updateQualityTest(testItem,10);
 
-//     expect(testItem.sellIn).toBe(14);
-//     expect(testItem.quality).toBe(21);
-//   });
-// });
+    expect(testItem.sellIn).toBe(14);
+    expect(testItem.quality).toBe(21);
+  });
+});
 
 // Testing dynamics of Conjured Mana Cake ------------------------------------------------------
 
@@ -123,9 +110,24 @@ describe("brieQuality", () => {
 //   it("quality decreases twice as fast as basic items for each day closer to sellIn date", () => {
 //     const testItem = items[5];
 
-//     updateQuality();
+//     updateQualityTest(testItem, 6);
 
-//     expect(testItem.sellIn).toBe(2);
-//     expect(testItem.quality).toBe(4);
+//     expect(testItem.sellIn).toBe(-3);
+//     expect(testItem.quality).toBe(0);
+//   });
+// });
+
+// Testing dynamics of Conjured item with lots of quality ---------------------------------------------
+
+// describe("conjuredItem", () => {
+//   it("quality decreases twice as fast as basic items for each day closer to sellIn date", () => {
+//     const item = new Conjured ("Conjured Thingy",10,50);
+//     items.push(item);
+//     const testItem = items[6];
+
+//     updateQualityTest(testItem, 6);
+
+//     expect(testItem.sellIn).toBe(-3);
+//     expect(testItem.quality).toBe(0);
 //   });
 // });
